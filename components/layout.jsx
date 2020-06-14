@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Navbar, NavbarBrand, Collapse, NavbarToggler, Nav, NavItem, NavLink } from 'reactstrap'
 import styles from './layout.module.css'
 import { annotate } from 'rough-notation';
+import utilStyles from '../styles/utils.module.css'
 
 
 export default function Layout({ children, home }) {
@@ -23,10 +24,10 @@ export default function Layout({ children, home }) {
                 {home? (
                     <>
                         <Navbar color="faded" light>
-                            <NavbarBrand id="appHeader" className={`mr-auto ${styles.frontPageHeader}`}>
+                            <NavbarBrand id="appHeader" className={`${styles.frontPageHeader}`}>
                                 {siteTitle}
                             </NavbarBrand>
-                            <NavbarToggler onClick={toggleNavMenu} className="mr-2"/>
+                            <NavbarToggler onClick={toggleNavMenu}/>
                             <Collapse isOpen={!collapsed} navbar>
                                 <Nav navbar>
                                     <NavItem>
@@ -47,11 +48,11 @@ export default function Layout({ children, home }) {
                     <>
                         <Navbar color="faded" light>
                             <Link href="/" passHref>
-                                <NavbarBrand id="appHeader" className="mr-auto">
+                                <NavbarBrand id="appHeader">
                                     {siteTitle}
                                 </NavbarBrand>
                             </Link>
-                            <NavbarToggler onClick={toggleNavMenu} className="mr-2"/>
+                            <NavbarToggler onClick={toggleNavMenu}/>
                             <Collapse isOpen={!collapsed} navbar>
                                 <Nav navbar>
                                     <NavItem>
@@ -71,6 +72,30 @@ export default function Layout({ children, home }) {
                 )}
             </header>
             <main> {children} </main>
+            <footer className={`${styles.container} ${styles.footer}`}>
+                {home? (
+                    <div className={utilStyles.spaceBetweenFlex}>
+                    <NavbarBrand>
+                        <h6 className={`${styles.frontPageHeader}`}>
+                            &copy; 2020 &nbsp;{siteTitle}
+                        </h6>
+                    </NavbarBrand>
+                    <h6>All rights reserved.</h6>
+                </div>
+                ) : (
+                    <div className={utilStyles.spaceBetweenFlex}>
+                    <NavbarBrand>
+                        <h6 className={`${styles.frontPageHeader}`}>
+                            &copy; 2020 &nbsp;
+                            <Link href="/">
+                                {siteTitle}
+                            </Link>
+                        </h6>
+                    </NavbarBrand>
+                    <h6>All rights reserved.</h6>
+                </div>
+                )}
+            </footer>
         </>
     )
 }

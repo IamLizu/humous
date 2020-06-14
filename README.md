@@ -1,8 +1,18 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## Humous
+A modern, simplified blog application that let's you focus your work instead of maintaining your application.
 
-## Getting Started
 
-First, run the development server:
+### Getting Started
+
+First, install the required packages:
+
+```bash
+npm install
+# or 
+yarn install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
@@ -12,19 +22,13 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+#### Data
+All application data are stored inside `data` directory. Editing them will take effect on the whole site, wherever they are used. 
 
-## Learn More
+#### Post
+Blog posts are stored inside `data` > `posts` directory. Place new files in the directory and let the application do its work.
 
-To learn more about Next.js, take a look at the following resources:
+**N:B:** Make sure to build the app and update your production files in your CDN or server.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/import?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Contributing
+Maintain cleen code > follow directory structure > test your code > Submit PR!

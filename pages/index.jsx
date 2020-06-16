@@ -19,7 +19,7 @@ export async function getStaticProps() {
 export default function Home({ allPostsData }) {
     useEffect(() => {
         const e = document.getElementById('blogHeader');
-        const annotation = annotate(e, { type: 'box', color: '#8484D5' });
+        const annotation = annotate(e, { type: 'underline', color: '#8484D5' });
         annotation.show();
     })
 
@@ -29,7 +29,7 @@ export default function Home({ allPostsData }) {
                 <title>{siteTitle} | {siteTagLine}</title>
             </Head>
             <section className={utilStyle.blogContainer}>
-                <h5 id="blogHeader">Latest Posts</h5>
+                <h5 id="blogHeader" className={utilStyle.blogHeader}>Latest Posts</h5>
 
                 <div className={utilStyle.blogStream}>
                     {allPostsData.map(({ id, date, title, author }) => (

@@ -34,7 +34,7 @@ export default function Home({ allPostsData }) {
                 <h5 id="blogHeader" className={utilStyle.blogHeader}>Latest Posts</h5>
 
                 <div className={utilStyle.blogStream}>
-                    {allPostsData.map(({ id, date, title, author }) => (
+                    {allPostsData.map(({ id, publishDate, title, author }) => (
                         <Media key={id} className={utilStyle.blogItem}>
                             <Link href="/posts/[id]" as={`/posts/${id}`}>
                                 <a>
@@ -43,7 +43,7 @@ export default function Home({ allPostsData }) {
                                             {title}
                                         </Media>
                                             <small className={utilStyle.lightText}>
-                                                <span> <p>{author} &bull;  <Date dateString={date} /></p> </span> 
+                                                <span> <p>{author} &bull;  <Date dateString={publishDate} /></p> </span> 
                                             </small>
                                     </Media>
                                 </a>

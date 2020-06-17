@@ -1,2 +1,5 @@
 export const siteTitle = "humous"
+export const siteUrl = "http://localhost:3000"
+export const siteLogo = "http://localhost:3000/logo.png"
 export const siteTagLine = "Your favorite blog application!"
+export const siteTwitter = "@humous"

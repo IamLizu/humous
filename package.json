@@ -10,6 +10,7 @@
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
     "bootstrap": "^4.5.0",
+    "date-fns": "^2.14.0",
     "fs": "0.0.1-security",
     "gray-matter": "^4.0.2",
     "next": "9.4.4",
@@ -17,6 +18,8 @@
     "react": "16.13.1",
     "react-dom": "16.13.1",
     "reactstrap": "^8.4.1",
+    "remark": "^12.0.0",
+    "remark-html": "^11.0.2",
     "rough-notation": "^0.3.1"
   }
 }

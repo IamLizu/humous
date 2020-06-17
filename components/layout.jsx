@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { siteTitle } from '../data/about'
+import { siteTitle } from '../data/info'
 import Link from 'next/link'
 import { Navbar, NavbarBrand, Collapse, NavbarToggler, Nav, NavItem, NavLink } from 'reactstrap'
 import styles from './layout.module.css'

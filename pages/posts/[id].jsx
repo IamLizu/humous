@@ -1,7 +1,7 @@
 import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
-import { siteUrl, siteTitle, siteLogo, siteTwitter } from '../../data/about'
+import { siteUrl, siteTitle, siteLogo, siteTwitter } from '../../data/info'
 import utilStyles from '../../styles/utils.module.css'
 import Date from '../../components/date'
 import styles from './id.module.css'

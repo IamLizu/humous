@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { siteTitle, siteTagLine } from '../data/about'
+import { siteTitle, siteTagLine } from '../data/info'
 import Layout from '../components/layout'
 import { useEffect } from 'react'
 import { annotate } from 'rough-notation';

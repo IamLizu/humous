@@ -5,7 +5,7 @@ import { Navbar, NavbarBrand, Collapse, NavbarToggler, Nav, NavItem, NavLink } f
 import styles from './layout.module.css'
 import { annotate } from 'rough-notation';
 import utilStyles from '../styles/utils.module.css'
-import MenuItem from '../data/pages/allPages.json'
+import MenuItem from '../data/allPages.json'
 
 
 export default function Layout({ children, home }) {

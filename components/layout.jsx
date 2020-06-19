@@ -5,6 +5,7 @@ import { Navbar, NavbarBrand, Collapse, NavbarToggler, Nav, NavItem, NavLink } f
 import styles from './layout.module.css'
 import { annotate } from 'rough-notation';
 import utilStyles from '../styles/utils.module.css'
+import MenuItem from '../data/pages/allPages.json'
 
 
 export default function Layout({ children, home }) {
@@ -30,16 +31,15 @@ export default function Layout({ children, home }) {
                             <NavbarToggler onClick={toggleNavMenu}/>
                             <Collapse isOpen={!collapsed} navbar>
                                 <Nav navbar>
-                                    <NavItem>
-                                        <Link href="/about/" passHref>
-                                            <NavLink>About</NavLink>
-                                        </Link>
-                                    </NavItem>
-                                    <NavItem>
-                                        <Link href="/submit-post/" passHref>
-                                            <NavLink>Submit Post</NavLink>
-                                        </Link>
-                                    </NavItem>
+                                    {MenuItem.map(({ page, title }) => (
+                                        <NavItem key={page}>
+                                            <Link href="/[page]" as={page}>
+                                                <a className={utilStyles.noundURI}>
+                                                    <NavLink>{title}</NavLink>
+                                                </a>
+                                            </Link>
+                                        </NavItem>
+                                    ))}
                                 </Nav>
                             </Collapse>
                         </Navbar>
@@ -55,16 +55,15 @@ export default function Layout({ children, home }) {
                             <NavbarToggler onClick={toggleNavMenu}/>
                             <Collapse isOpen={!collapsed} navbar>
                                 <Nav navbar>
-                                    <NavItem>
-                                        <Link href="/about/" passHref>
-                                            <NavLink>About</NavLink>
-                                        </Link>
-                                    </NavItem>
-                                    <NavItem>
-                                        <Link href="/submit-post/" passHref>
-                                            <NavLink>Submit Post</NavLink>
-                                        </Link>
-                                    </NavItem>
+                                    {MenuItem.map(({ page, title }) => (
+                                        <NavItem key={page}>
+                                            <Link href="/[page]" as={page}>
+                                                <a className={utilStyles.noundURI}>
+                                                    <NavLink>{title}</NavLink>
+                                                </a>
+                                            </Link>
+                                        </NavItem>
+                                    ))}
                                 </Nav>
                             </Collapse>
                         </Navbar>
@@ -87,8 +86,8 @@ export default function Layout({ children, home }) {
                     <NavbarBrand>
                         <h6 className={`${styles.frontPageHeader}`}>
                             &copy; 2020 &nbsp;
-                            <Link href="/">
-                                {siteTitle}
+                            <Link href="/" passHref>
+                                <a>{siteTitle}</a>
                             </Link>
                         </h6>
                     </NavbarBrand>

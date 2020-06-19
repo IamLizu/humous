@@ -26,3 +26,9 @@
 .lightText {
     color: #999;
 }
+.noundURI {
+    text-decoration: none;
+}
+.noundURI:hover {
+    text-decoration: none;
+}

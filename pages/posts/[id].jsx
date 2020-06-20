@@ -2,10 +2,10 @@ import Layout from '../../components/layout'
 import { getAllPostIds, getPostData } from '../../lib/posts'
 import Head from 'next/head'
 import { siteUrl, siteTitle, siteLogo, siteTwitter } from '../../data/info'
-import utilStyles from '../../styles/utils.module.css'
 import Date from '../../components/date'
 import styles from './id.module.css'
 import Schema from '../../data/schema/article'
+import { useEffect, useState } from 'react'
 
 
 export default function Post({ postData }) {
@@ -37,6 +37,27 @@ export default function Post({ postData }) {
     updatedData = updatedData.replace(regex11, postData.authorWebsite);
     updatedData = updatedData.replace(regex12, postData.authorImage);
 
+    const showHashtags = tags => {
+        let articleTags = tags
+        let tagArr = articleTags.split(',')
+        let hashtags = []
+        tagArr.forEach(tag => {
+            let hashtag =  tag.trim()
+            hashtags.push('#'+ hashtag + ' ')
+        });
+        return hashtags
+    }
+
+    const [user, setUser] = useState({})
+
+    useEffect(() => {
+        (async () => {
+            const rawData = await fetch(`https://cors-anywhere.herokuapp.com/https://api.github.com/users/${postData.authorGithub}`)
+            const userData = await rawData.json() 
+            setUser(userData)  
+        })()
+    })
+
     return(
         <Layout>
             <Head>
@@ -52,14 +73,17 @@ export default function Post({ postData }) {
                 <meta name="twitter:title" content={postData.title}  />
                 <meta name="twitter:description" content={postData.description} />
                 <meta name="twitter:image" content={postData.image} />
+                <link rel="canonical" href={`${siteUrl}/posts/${postData.id}`} />
                 <script type="application/ld+json">
                     {updatedData}
                 </script>
             </Head>
             <article className={styles.container}>
+                <img src={postData.image} alt={postData.title} className={styles.image}/>
                 <h2>{postData.title}</h2>
-                <div className={utilStyles.lightText}>
-                    <span> <p>{postData.author} &bull;  <Date dateString={postData.publishDate} /></p> </span> 
+                <div className={styles.postInfoBar1}>
+                    <p><span className={styles.postTags}>{showHashtags(postData.tags)}</span> &bull; <span className={styles.postPubDate}>Published on <Date dateString={postData.publishDate} /></span></p>
+                    <p><b className={styles.postAuthor}>{postData.author}</b> &nbsp;&nbsp; <span><img className={styles.authorImage} src={user.avatar_url} alt={postData.author} width="45px"/></span></p>
                 </div>
                 <div dangerouslySetInnerHTML={{__html: postData.contentHtml}} className={styles.mainContent}/>
             </article>

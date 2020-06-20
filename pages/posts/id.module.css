@@ -4,3 +4,55 @@
 .mainContent {
     margin: 2% 0%;
 }
+.image {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+}
+.postInfoBar1{
+    margin: 15px 0px;
+    cursor: default;
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+.postAuthor {
+    font-weight: 500;
+    font-size: 20px;
+}
+.authorImage {
+    max-width: 45px;
+    border-radius: 1000px;
+}
+.postTags {
+    background-color: #D5A084;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin: 0px 10px;
+    font-size: inherit;
+}
+.postPubDate {
+    background-color: blueviolet;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin: 0px 5px;
+    font-size: inherit;
+}
+@media screen and (min-width: 300px) {
+    .postTags, .postPubDate {
+      font-size: 9.3px;
+    }
+}
+@media screen and (min-width: 450px) {
+    .postTags, .postPubDate {
+      font-size: 12px;
+    }
+}
+@media screen and (max-width: 300px) {
+    .postTags, .postPubDate {
+      font-size: 8.5px;
+    }
+}

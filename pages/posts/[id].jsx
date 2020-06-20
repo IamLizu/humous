@@ -6,7 +6,6 @@ import Date from '../../components/date'
 import styles from './id.module.css'
 import Schema from '../../data/schema/article'
 import { useEffect, useState } from 'react'
-// import { fetchGitHubData } from '../../lib/author'
 
 
 export default function Post({ postData }) {
@@ -39,14 +38,16 @@ export default function Post({ postData }) {
     updatedData = updatedData.replace(regex12, postData.authorImage);
 
     const showHashtags = tags => {
-        let articleTags = tags
-        let tagArr = articleTags.split(',')
-        let hashtags = []
-        tagArr.forEach(tag => {
-            let hashtag =  tag.trim()
-            hashtags.push('#'+ hashtag + ' ')
-        });
-        return hashtags
+        if(tags){
+            let articleTags = tags
+            let tagArr = articleTags.split(',')
+            let hashtags = []
+            tagArr.forEach(tag => {
+                let hashtag =  tag.trim()
+                hashtags.push('#'+ hashtag + ' ')
+            });
+            return hashtags
+        }
     }
 
     const [user, setUser] = useState({})
@@ -83,10 +84,18 @@ export default function Post({ postData }) {
                 </script>
             </Head>
             <article className={styles.container}>
-                <img src={postData.image} alt={postData.title} className={styles.image}/>
+                {postData.image? (
+                    <img src={postData.image} alt={postData.title} className={styles.image}/>
+                ) : (
+                    <></>
+                )}
                 <h2>{postData.title}</h2>
                 <div className={styles.postInfoBar1}>
-                    <p><span className={styles.postTags}>{showHashtags(postData.tags)}</span> &bull; <span className={styles.postPubDate}>Published on <Date dateString={postData.publishDate} /></span></p>
+                    <p>{postData.tags? (
+                        <span className={styles.postTags}>{showHashtags(postData.tags)}</span>
+                    ) : (
+                        <></>
+                    )} <span className={styles.postPubDate}>Published on <Date dateString={postData.publishDate} /></span></p>
                     <p><b className={styles.postAuthor}>{postData.author}</b> &nbsp;&nbsp; <span><img className={styles.authorImage} src={user.avatar_url} alt={postData.author} width="45px"/></span></p>
                 </div>
                 <div dangerouslySetInnerHTML={{__html: postData.contentHtml}} className={styles.mainContent}/>

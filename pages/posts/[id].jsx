@@ -6,6 +6,7 @@ import Date from '../../components/date'
 import styles from './id.module.css'
 import Schema from '../../data/schema/article'
 import { useEffect, useState } from 'react'
+// import { fetchGitHubData } from '../../lib/author'
 
 
 export default function Post({ postData }) {
@@ -50,13 +51,16 @@ export default function Post({ postData }) {
 
     const [user, setUser] = useState({})
 
+    const getUser = async () => {
+        const rawData = await fetch(`https://cors-anywhere.herokuapp.com/https://api.github.com/users/${postData.authorGithub}`)
+        const userData = await rawData.json()  
+        setUser(userData)
+    }
+
     useEffect(() => {
-        (async () => {
-            const rawData = await fetch(`https://cors-anywhere.herokuapp.com/https://api.github.com/users/${postData.authorGithub}`)
-            const userData = await rawData.json() 
-            setUser(userData)  
-        })()
-    })
+        getUser()
+    }, [])
+    
 
     return(
         <Layout>

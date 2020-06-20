@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "concurrently \"cd lib && node getMenuItems.js\" \"next dev\"",
-    "build": "next build",
-    "start": "next start"
+    "build": "concurrently \"cd lib && node getMenuItems.js\" \"next build\"",
+    "start": "concurrently \"cd lib && node getMenuItems.js\" \"next start\""
   },
   "dependencies": {
     "@zeit/next-css": "^1.0.1",

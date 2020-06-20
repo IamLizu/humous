@@ -1,10 +1,6 @@
 ---
 title: 'Markdown to The Rescue'
-author: 'Lee'
-authorGithub: 'iamlizu'
-authorWebsite: 'https://iamlizu.com/'
-authorImage: ''
-authorTwitter: 'iamlizu'
+author: 'iamlizu'
 description: 'Just checking our new application'
 image: 'http://static01.nyt.com/images/2015/02/19/arts/international/19iht-btnumbers19A/19iht-btnumbers19A-facebookJumbo-v2.jpg'
 publishDate: '2020-06-10'

@@ -4,7 +4,7 @@ import Head from 'next/head'
 import { siteUrl, siteTitle, siteLogo, siteTwitter } from '../../data/info'
 import Date from '../../components/date'
 import styles from './id.module.css'
-import Schema from '../../data/schema/article'
+import Schema from '../../schema/article'
 import { useEffect, useState } from 'react'
 
 
@@ -33,9 +33,6 @@ export default function Post({ postData }) {
     updatedData = updatedData.replace(regex7, siteTitle);
     updatedData = updatedData.replace(regex8, siteUrl);
     updatedData = updatedData.replace(regex9, siteLogo);
-    updatedData = updatedData.replace(regex10, postData.author);
-    updatedData = updatedData.replace(regex11, postData.authorWebsite);
-    updatedData = updatedData.replace(regex12, postData.authorImage);
 
     const showHashtags = tags => {
         if(tags){
@@ -51,11 +48,18 @@ export default function Post({ postData }) {
     }
 
     const [user, setUser] = useState({})
+    const [schema, setSchema] = useState('')
+    const [authorTwitter, setTwitterU] = useState('')
 
     const getUser = async () => {
-        const rawData = await fetch(`https://cors-anywhere.herokuapp.com/https://api.github.com/users/${postData.authorGithub}`)
+        const rawData = await fetch(`https://api.github.com/users/${postData.author}`)
         const userData = await rawData.json()  
         setUser(userData)
+        updatedData = updatedData.replace(regex10, userData.name);
+        updatedData = updatedData.replace(regex11, userData.blog);
+        updatedData = updatedData.replace(regex12, userData.avatar_url);
+        setTwitterU(userData.twitter_username)
+        setSchema(updatedData)
     }
 
     useEffect(() => {
@@ -74,13 +78,13 @@ export default function Post({ postData }) {
                 <meta property="og:image"              content={postData.image} />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta name="twitter:site" content={siteTwitter} />
-                <meta name="twitter:creator" content={`@${postData.authorTwitter}`} />
+                <meta name="twitter:creator" content={`@${authorTwitter}`} />
                 <meta name="twitter:title" content={postData.title}  />
                 <meta name="twitter:description" content={postData.description} />
                 <meta name="twitter:image" content={postData.image} />
                 <link rel="canonical" href={`${siteUrl}/posts/${postData.id}`} />
                 <script type="application/ld+json">
-                    {updatedData}
+                    {schema}
                 </script>
             </Head>
             <article className={styles.container}>
@@ -96,7 +100,7 @@ export default function Post({ postData }) {
                     ) : (
                         <></>
                     )} <span className={styles.postPubDate}>Published on <Date dateString={postData.publishDate} /></span></p>
-                    <p><b className={styles.postAuthor}>{postData.author}</b> &nbsp;&nbsp; <span><img className={styles.authorImage} src={user.avatar_url} alt={postData.author} width="45px"/></span></p>
+                    <a className={styles.postAuthor} target="_blank" href={user.blog}><p className={styles.postAuthorBox}><span><img className={styles.authorImage} src={user.avatar_url} alt={postData.author} width="45px"/></span> &nbsp; <b>{user.name}</b></p></a>
                 </div>
                 <div dangerouslySetInnerHTML={{__html: postData.contentHtml}} className={styles.mainContent}/>
             </article>

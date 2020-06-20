@@ -17,9 +17,19 @@
     justify-content: space-between;
     align-items: baseline;
 }
+.postAuthorBox {
+    background-color: #F0E3DC;
+    padding: 8px 10px;
+    border-radius: 1000px 10px 10px 1000px;
+}
 .postAuthor {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 15px;
+    color: rgb(0, 0, 0.9);
+}
+.postAuthor:hover {
+    color: rgb(14, 14, 15);
+    text-decoration: none;
 }
 .authorImage {
     max-width: 45px;
@@ -54,5 +64,18 @@
 @media screen and (max-width: 300px) {
     .postTags, .postPubDate {
       font-size: 8.5px;
+    }
+}
+@media screen and (max-width: 605px) {
+    .postInfoBar1 {
+        display: block;
+    }
+    .postAuthorBox {
+        padding: 6px 8px;
+    }
+    .postAuthor {
+        font-weight: 500;
+        font-size: 13px;
+        color: rgb(0, 0, 0.9);
     }
 }

@@ -33,10 +33,8 @@ export default function Layout({ children, home }) {
                                 <Nav navbar>
                                     {MenuItem.map(({ page, title }) => (
                                         <NavItem key={page}>
-                                            <Link href="/[page]" as={page}>
-                                                <a className={utilStyles.noundURI}>
-                                                    <NavLink>{title}</NavLink>
-                                                </a>
+                                            <Link href="/[page]" as={page} passHref>
+                                                <NavLink>{title}</NavLink>
                                             </Link>
                                         </NavItem>
                                     ))}
@@ -47,20 +45,16 @@ export default function Layout({ children, home }) {
                 ) : (
                     <>
                         <Navbar color="faded" light>
-                            <Link href="/" passHref>
-                                <NavbarBrand id="appHeader">
-                                    {siteTitle}
-                                </NavbarBrand>
+                            <Link href="/" >
+                                <a id="appHeader" className={utilStyles.navBrand}><p>{siteTitle}</p></a>
                             </Link>
                             <NavbarToggler onClick={toggleNavMenu}/>
                             <Collapse isOpen={!collapsed} navbar>
                                 <Nav navbar>
                                     {MenuItem.map(({ page, title }) => (
                                         <NavItem key={page}>
-                                            <Link href="/[page]" as={page}>
-                                                <a className={utilStyles.noundURI}>
-                                                    <NavLink>{title}</NavLink>
-                                                </a>
+                                            <Link href="/[page]" as={`/${page}`} passHref>
+                                                <NavLink>{title}</NavLink>
                                             </Link>
                                         </NavItem>
                                     ))}
@@ -83,14 +77,12 @@ export default function Layout({ children, home }) {
                 </div>
                 ) : (
                     <div className={utilStyles.spaceBetweenFlex}>
-                    <NavbarBrand>
-                        <h6 className={`${styles.frontPageHeader}`}>
+                        <h6 className={utilStyles.defaultCursor}>
                             &copy; 2020 &nbsp;
                             <Link href="/" passHref>
-                                <a>{siteTitle}</a>
+                                <a className={utilStyles.noundURI}>{siteTitle}</a>
                             </Link>
                         </h6>
-                    </NavbarBrand>
                     <h6>All rights reserved.</h6>
                 </div>
                 )}

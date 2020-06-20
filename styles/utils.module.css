@@ -2,6 +2,9 @@
     display: flex;
     justify-content: space-between;
 }
+.defaultCursor {
+    cursor: default;
+}
 .blogContainer {
     padding: 1% 5%;
 }
@@ -26,9 +29,28 @@
 .lightText {
     color: #999;
 }
+.navBrand {
+    display: inline-block;
+    color: rgba(0,0,0,.9);
+    text-decoration: none;
+    padding-top: .3125rem;
+    padding-bottom: .3125rem;
+    margin-right: 1rem;
+    font-size: 1.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+}
+.navBrand:hover {
+    color: rgba(0,0,0,.9);
+    text-decoration: none;
+}
 .noundURI {
     text-decoration: none;
+    cursor: pointer;
+    color: black;
 }
 .noundURI:hover {
     text-decoration: none;
+    color: black;
 }

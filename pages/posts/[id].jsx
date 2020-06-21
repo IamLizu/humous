@@ -52,14 +52,18 @@ export default function Post({ postData }) {
     const [authorTwitter, setTwitterU] = useState('')
 
     const getUser = async () => {
-        const rawData = await fetch(`https://api.github.com/users/${postData.author}`)
-        const userData = await rawData.json()  
-        setUser(userData)
-        updatedData = updatedData.replace(regex10, userData.name);
-        updatedData = updatedData.replace(regex11, userData.blog);
-        updatedData = updatedData.replace(regex12, userData.avatar_url);
-        setTwitterU(userData.twitter_username)
-        setSchema(updatedData)
+        try {
+            const rawData = await fetch(`https://api.github.com/users/${postData.author}`)
+            const userData = await rawData.json()  
+            setUser(userData)
+            updatedData = updatedData.replace(regex10, userData.name);
+            updatedData = updatedData.replace(regex11, userData.blog);
+            updatedData = updatedData.replace(regex12, userData.avatar_url);
+            setTwitterU(userData.twitter_username)
+            setSchema(updatedData)
+        } catch {
+            console.log("couldn't fetch userdata")
+        }
     }
 
     useEffect(() => {

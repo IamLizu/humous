@@ -21,12 +21,16 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Info
+Before getting into anything, let's change what needs to be changed first. Go to `data` and open `info.js` and edit the variable values. For example,
 
 #### Data
 All application data are stored inside `data` directory. Editing them will take effect on the whole site, wherever they are used. 
 
 #### Post
-Blog posts are stored inside `data` > `posts` directory. Place new files in the directory and let the application do its work.
+Blog posts are stored inside `data` > `posts` directory. Place new files in the directory and let the application do its work.  
+
+Please check [Wiki: How-To](https://github.com/IamLizu/humous/wiki/How-To) for detailed information.  
 
 **N:B:** Make sure to build the app and update your production files in your CDN or server.
 

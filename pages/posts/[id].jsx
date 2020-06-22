@@ -67,11 +67,13 @@ export default function Post({ postData }) {
     }
 
     useEffect(() => {
+        if (!postData.publishDate) {
+            window.location="/404"
+        }
         getUser()
     }, [])
     
-
-    return(
+    const post = postData.publishDate? (
         <Layout>
             <Head>
                 <title>{postData.title} | {siteTitle}</title>
@@ -109,7 +111,12 @@ export default function Post({ postData }) {
                 <div dangerouslySetInnerHTML={{__html: postData.contentHtml}} className={styles.mainContent}/>
             </article>
         </Layout>
-    )
+    ) : (
+    <>
+        {/* Not available */}
+    </>)
+
+    return(post)
 }
 
 export async function getStaticPaths() {

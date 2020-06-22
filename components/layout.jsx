@@ -1,11 +1,11 @@
 import { useState, useEffect } from 'react'
-import { siteTitle } from '../data/info'
+import { siteTitle, siteTagLine } from '../data/info'
 import Link from 'next/link'
 import { Navbar, NavbarBrand, Collapse, NavbarToggler, Nav, NavItem, NavLink } from 'reactstrap'
 import styles from './layout.module.css'
 import { annotate } from 'rough-notation';
 import utilStyles from '../styles/utils.module.css'
-import MenuItem from '../data/allPages.json'
+import MenuItem from '../components/menuItems.json'
 
 
 export default function Layout({ children, home }) {
@@ -70,10 +70,10 @@ export default function Layout({ children, home }) {
                     <div className={utilStyles.spaceBetweenFlex}>
                     <NavbarBrand>
                         <h6 className={`${styles.frontPageHeader}`}>
-                            &copy; 2020 &nbsp;{siteTitle}
+                            &copy; 2020 &nbsp;{siteTitle}&nbsp;/&nbsp;All Rights Reserved.
                         </h6>
                     </NavbarBrand>
-                    <h6>All rights reserved.</h6>
+                    <h6>{siteTagLine}</h6>
                 </div>
                 ) : (
                     <div className={utilStyles.spaceBetweenFlex}>
@@ -82,8 +82,9 @@ export default function Layout({ children, home }) {
                             <Link href="/" passHref>
                                 <a className={utilStyles.noundURI}>{siteTitle}</a>
                             </Link>
+                            &nbsp;/&nbsp;All Rights Reserved.
                         </h6>
-                    <h6>All rights reserved.</h6>
+                    <h6>{siteTagLine}</h6>
                 </div>
                 )}
             </footer>

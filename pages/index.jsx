@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { siteTitle, siteTagLine } from '../data/info'
+import { siteTitle, siteTagLine, siteUrl, siteLogo, siteTwitter } from '../data/info'
 import Layout from '../components/layout'
 import { useEffect } from 'react'
 import { annotate } from 'rough-notation';
@@ -29,6 +29,18 @@ export default function Home({ allPostsData }) {
         <Layout home>
             <Head>
                 <title>{siteTitle} | {siteTagLine}</title>
+                <meta property="og:url"                content={siteUrl} />
+                <meta property="og:type"               content="website" />
+                <meta property="og:title"              content={siteTitle} />
+                <meta property="og:description"        content={siteTagLine} />
+                <meta property="og:image"              content={siteLogo} />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:site" content={siteTwitter} />
+                <meta name="twitter:creator" content={siteTwitter} />
+                <meta name="twitter:title" content={siteTitle}  />
+                <meta name="twitter:description" content={siteTagLine} />
+                <meta name="twitter:image" content={siteLogo} />
+                <link rel="canonical" href={siteUrl} />
             </Head>
             <section className={utilStyle.blogContainer}>
                 <h5 id="blogHeader" className={utilStyle.blogHeader}>Latest Posts</h5>

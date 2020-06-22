@@ -34,22 +34,26 @@ export default function Home({ allPostsData }) {
                 <h5 id="blogHeader" className={utilStyle.blogHeader}>Latest Posts</h5>
 
                 <div className={utilStyle.blogStream}>
-                    {allPostsData.map(({ id, publishDate, title, author }) => (
-                        <Media key={id} className={utilStyle.blogItem}>
-                            <Link href="/posts/[id]" as={`/posts/${id}`}>
-                                <a>
-                                    <Media body>
-                                        <Media heading>
-                                            {title}
+                    {allPostsData.map(({ id, publishDate, title, author }) => {
+                        if (publishDate) {
+                            return(
+                                <Link href="/posts/[id]" as={`/posts/${id}`} key={id}>
+                                    <a className={utilStyle.noundURI}>
+                                        <Media className={utilStyle.blogItem}>
+                                            <Media body>
+                                                <Media heading>
+                                                    {title}
+                                                </Media>
+                                                    <small className={utilStyle.lightText}>
+                                                        <span> <p>{author} &bull;  <Date dateString={publishDate} /></p> </span> 
+                                                    </small>
+                                            </Media>
                                         </Media>
-                                            <small className={utilStyle.lightText}>
-                                                <span> <p>{author} &bull;  <Date dateString={publishDate} /></p> </span> 
-                                            </small>
-                                    </Media>
-                                </a>
-                            </Link>
-                        </Media>
-                    ))}
+                                    </a>
+                                </Link>
+                            )
+                        }
+                    })}
                 </div>
             </section>
         </Layout>

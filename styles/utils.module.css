@@ -48,9 +48,9 @@
 .noundURI {
     text-decoration: none;
     cursor: pointer;
-    color: black;
+    color: gray;
 }
 .noundURI:hover {
     text-decoration: none;
-    color: black;
+    color: rgb(14, 13, 13);
 }

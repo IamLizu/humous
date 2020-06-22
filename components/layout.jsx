@@ -19,6 +19,8 @@ export default function Layout({ children, home }) {
         annotation.show();
     })
 
+    const menu = MenuItem.sort((a, b) => parseInt(a.order) - parseInt(b.order))
+
     return(
         <>
             <header className={styles.container}>
@@ -31,13 +33,17 @@ export default function Layout({ children, home }) {
                             <NavbarToggler onClick={toggleNavMenu}/>
                             <Collapse isOpen={!collapsed} navbar>
                                 <Nav navbar>
-                                    {MenuItem.map(({ page, title }) => (
-                                        <NavItem key={page}>
-                                            <Link href="/[page]" as={page} passHref>
-                                                <NavLink>{title}</NavLink>
-                                            </Link>
-                                        </NavItem>
-                                    ))}
+                                    {menu.map(({ page, title, order }) => {
+                                        if (order) {
+                                            return(
+                                                <NavItem key={page}>
+                                                    <Link href="/[page]" as={page} passHref>
+                                                        <NavLink>{title}</NavLink>
+                                                    </Link>
+                                                </NavItem>
+                                            )
+                                        }
+                                    })}
                                 </Nav>
                             </Collapse>
                         </Navbar>
@@ -51,13 +57,17 @@ export default function Layout({ children, home }) {
                             <NavbarToggler onClick={toggleNavMenu}/>
                             <Collapse isOpen={!collapsed} navbar>
                                 <Nav navbar>
-                                    {MenuItem.map(({ page, title }) => (
-                                        <NavItem key={page}>
-                                            <Link href="/[page]" as={`/${page}`} passHref>
-                                                <NavLink>{title}</NavLink>
-                                            </Link>
-                                        </NavItem>
-                                    ))}
+                                    {menu.map(({ page, title, order }) => {
+                                        if (order) {
+                                            return(
+                                                <NavItem key={page}>
+                                                    <Link href="/[page]" as={`/${page}`} passHref>
+                                                        <NavLink>{title}</NavLink>
+                                                    </Link>
+                                                </NavItem>
+                                            )
+                                        }
+                                    })}
                                 </Nav>
                             </Collapse>
                         </Navbar>

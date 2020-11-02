@@ -26,13 +26,13 @@ export default function Layout({ children, home }) {
             <header className={styles.container}>
                 {home? (
                     <>
-                        <Navbar color="faded" light>
+                        <Navbar color="faded" light expand="sm">
                             <NavbarBrand id="appHeader" className={`${styles.frontPageHeader}`}>
                                 {siteTitle}
                             </NavbarBrand>
                             <NavbarToggler onClick={toggleNavMenu}/>
                             <Collapse isOpen={!collapsed} navbar>
-                                <Nav navbar>
+                                <Nav className="ml-auto" navbar>
                                     {menu.map(({ page, title, order }) => {
                                         if (order) {
                                             return(
@@ -50,13 +50,13 @@ export default function Layout({ children, home }) {
                     </>
                 ) : (
                     <>
-                        <Navbar color="faded" light>
+                        <Navbar color="faded" light  expand="sm">
                             <Link href="/" >
                                 <a id="appHeader" className={utilStyles.navBrand}><p>{siteTitle}</p></a>
                             </Link>
                             <NavbarToggler onClick={toggleNavMenu}/>
                             <Collapse isOpen={!collapsed} navbar>
-                                <Nav navbar>
+                                <Nav navbar className="ml-auto">
                                     {menu.map(({ page, title, order }) => {
                                         if (order) {
                                             return(
